@@ -1,0 +1,27 @@
+body {
+    background-color: lightblue;
+    text-align: center;
+    background-image: url("https://cdn.dribbble.com/userupload/41863629/file/original-365bc794b2d75e82a2b4f5192b56f6da.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+}
+h1{
+    font-family: Papyrus;
+}
+ul.myUL {
+    display : inline-block;
+    text-align: left;
+}
+footer{color: hotpink;}
+
+p {
+    background-color: white;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+

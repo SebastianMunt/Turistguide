@@ -26,8 +26,8 @@ public class TouristService {
     }
 
     public TouristAttraction findAttractionByName(String name){
-        TouristAttraction attration = repository.findAttractionByName(name);
-        return attration;
+        TouristAttraction attraction = repository.findAttractionByName(name);
+        return attraction;
     }
 
     public TouristAttraction deleteAttraction (TouristAttraction attraction, boolean delete) {
