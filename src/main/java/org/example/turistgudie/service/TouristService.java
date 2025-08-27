@@ -1,0 +1,43 @@
+
+package org.example.turistgudie.service;
+
+
+import org.springframework.stereotype.Service;
+import org.example.turistgudie.repository.TouristRepository;
+import org.example.turistgudie.model.TouristAttraction;
+
+import java.util.List;
+
+@Service
+public class TouristService {
+    private final TouristRepository repository;
+
+    public TouristService(TouristRepository repository) {
+        this.repository = repository;
+
+    }
+
+    public List<TouristAttraction> getAll() {
+        return repository.getAll();
+    }
+
+    public TouristAttraction addAttraction(TouristAttraction attraction){
+        return repository.addAttraction(attraction);
+    }
+
+    public TouristAttraction findAttractionByName(String name){
+        TouristAttraction attration = repository.findAttractionByName(name);
+        return attration;
+    }
+
+    public TouristAttraction deleteAttraction (TouristAttraction attraction, boolean delete) {
+        if (delete) {
+            return repository.deleteAttraction(attraction);
+        }
+        return null;
+    }
+    public TouristAttraction updateAttraction(String name, TouristAttraction updatedAttraction){
+        return repository.updateAttraction(name , updatedAttraction);
+    }
+
+}
