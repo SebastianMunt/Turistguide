@@ -7,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.example.turistgudie.service.TouristService;
 import org.example.turistgudie.repository.TouristRepository;
 import org.example.turistgudie.model.TouristAttraction;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
-@RequestMapping ("/attractions")
+@RequestMapping("/attractions")
 public class TouristController {
     private final TouristService service;
 
@@ -21,14 +21,37 @@ public class TouristController {
     }
 
     @GetMapping
+    public ResponseEntity<List<TouristAttraction>> attractions() {
+        List<TouristAttraction> listToReturn = service.getAll();
+        return new ResponseEntity<>(listToReturn, HttpStatus.OK);
+    }
 
-    @ResponseBody
-    public ResponseEntity<String> attractions() {
-        return ResponseEntity.ok("See all attractions");
+    @GetMapping("/{name}")
+    public ResponseEntity<TouristAttraction> findAttractionByName(@PathVariable String name) {
+        TouristAttraction attraction = service.findAttractionByName(name);
+        return new ResponseEntity<>(attraction, HttpStatus.OK);
+    }
 
+    @PostMapping("/add")
+    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction attraction) {
+        TouristAttraction savedAttraction = service.addAttraction(attraction);
+        return new ResponseEntity<>(savedAttraction, HttpStatus.CREATED);
     }
 
 
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> deleteAttraction (@RequestBody TouristAttraction attraction) {
+        TouristAttraction deleted = service.deleteAttraction(attraction, true);
+        return new ResponseEntity<>(deleted, HttpStatus.OK);
+
+    }
+
+@PostMapping("/update/{name}")
+    public ResponseEntity<TouristAttraction> updatedAttraction(@PathVariable String name,
+                                                               @RequestBody TouristAttraction updatedAttraction){
+        TouristAttraction attraction = service.updateAttraction(name, updatedAttraction);
+        return new ResponseEntity<>(attraction, HttpStatus.OK);
+}
 }
 
 

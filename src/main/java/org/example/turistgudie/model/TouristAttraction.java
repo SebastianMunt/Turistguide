@@ -1,5 +1,6 @@
 package org.example.turistgudie.model;
 
+//Model klasse, bruges til at oprette TouristAttraktions objekter.
 public class TouristAttraction {
     private String name;
     private String description;

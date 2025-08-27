@@ -16,13 +16,13 @@ public class TouristRepository {
 
     private void populateAttractions() {
         data.add(new TouristAttraction("Tivoli", "Rutjebaner og såen"));
-        data.add(new TouristAttraction("Rundetårn", "Man kan blive rundtosset"));
-        data.add(new TouristAttraction("Den lille havfrue", "Måske uden hoved"));
+        data.add(new TouristAttraction("Bibliotek", "Man kan blive rundtosset"));
+        data.add(new TouristAttraction("FCKstadion", "Nordens største"));
         data.add(new TouristAttraction("EK", "tidligere kendt som KEA"));
     }
 
     public List<TouristAttraction> getAll() {
-        return new ArrayList<>(data);
+        return data;
     }
 
     public TouristAttraction addAttraction(TouristAttraction attraction) {
